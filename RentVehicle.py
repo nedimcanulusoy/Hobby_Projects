@@ -79,3 +79,36 @@ class RentVehicle:
                     bill = ((rentalPeriod.seconds / 3600 * 24 * 24) * numOfVehicles * (self.monthlyPrice))
                     return "Thanks for returning your vehicle. Hope you enjoyed our service!\nThat would be ${}".format(
                         bill)
+
+
+class Costumer:
+    def __init__(self):
+        self.vehicle = 0
+        self.rentalBasis = 0
+        self.rentalTime = 0
+        self.bill = 0
+
+    def requestVehicle(self):
+
+        vehicle = input("How many vehicle(s) would you like to rent?")
+
+        try:
+            vehicle = int(vehicle)
+        except ValueError:
+            print("You must enter an acceptable amount!")
+
+        if vehicle < 1:
+            return "Invalid input!"
+
+        else:
+            self.vehicle = vehicle
+
+        return self.vehicle
+
+    def returnVehicle(self):
+
+        if self.rentalBasis and self.rentalTime and self.vehicle:
+            return self.rentalTime, self.rentalBasis, self.vehicle
+
+        else:
+            return 0, 0, 0
